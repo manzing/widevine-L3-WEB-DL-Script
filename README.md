@@ -1,13 +1,16 @@
-# widevine-L3-WEB-DL-Script
+# widevine-L3-WEB-DL-Script with dual audio tracks support
 This is a script created to WEB-DL L3 Widevine Content.
 
 Original script by Parnexcodes (thanks for his work !) is here :
 https://github.com/parnexcodes/widevine-L3-WEB-DL-Script
 
-This modified script add proper support for 2 audio tracks, french and english (or other languages but MKV tags would be incorrects so modify the script if you intend to use another audio).
+This modified script add proper support for 2 audio tracks, french and english (or other languages but MKV tracks tags would be incorrects so please modify the script as you need if you intend to use another audio).
 A batch file is (or will be) provided to make things easier and as "-id" argument is mandatory for dual audio tracks.
+
 Other branch will be more deeply modified and will (maybe) offer an easier command interface, and ability to prepare several download.
-I am not a developer at all, so don't expect anything great.
+https://github.com/manzing/widevine-L3-WEB-DL-Script/tree/New-argument-for-input 
+
+Please note : I am not a developer at all, so don't expect anything great, this is just for fun :)
 
 ## How to use
 ### Requirements
