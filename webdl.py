@@ -50,7 +50,9 @@ if args.id:
     print(f'Selected MPD : {json_mpd_url}\n')    
     subprocess.run([youtubedlexe, '-k', '--allow-unplayable-formats', '--no-check-certificate', '-F', json_mpd_url])
 
-    vid_id = input("\nEnter Video ID : ")
+    vid_id = input("\nEnter Video ID (or press Enter for best) : ")
+    if vid_id == "":
+            vid_id = "bv"
     audio_id = input("Enter French Audio ID : ")
     audio2_id = input("Enter English Audio ID or press Enter to ignore : ")
     subprocess.run([youtubedlexe, '-k', '--allow-unplayable-formats', '--no-check-certificate', '-f', audio_id, '--fixup', 'never', json_mpd_url, '-o', 'encrypted.m4a', '--external-downloader', aria2cexe, '--external-downloader-args', '-x 16 -s 16 -k 1M'])
