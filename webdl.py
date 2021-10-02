@@ -1,4 +1,5 @@
 import os
+import os.path
 import json
 import subprocess
 import argparse
@@ -80,9 +81,12 @@ if args.subtitle:
     print("\nAll Done .....")
 else:
     print("Merging .....")
-    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0'])
-    print("\nAll Done .....")    
-
+    if os.path.isfile('decrypted2.m4a'):
+        subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0'])
+    else:
+        subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0'])
+        print("\nAll Done .....")    
+        
 print("\nDo you want to delete the Encrypted Files : Press 1 for yes , 2 for no")
 delete_choice = int(input("Enter Response : "))
 
