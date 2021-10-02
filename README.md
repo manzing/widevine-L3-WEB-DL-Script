@@ -1,13 +1,13 @@
 # widevine-L3-WEB-DL-Script
 This is a script created to WEB-DL L3 Widevine Content.
 
-Last Updated July 31, 2021.
+Original script by Parnexcodes (thanks for his work !) is here :
+https://github.com/parnexcodes/widevine-L3-WEB-DL-Script
 
-## Use the branch below if you aren't able to modify the code according to your needs
-
-<https://github.com/parnexcodes/widevine-L3-WEB-DL-Script/tree/method-2>
-
-Works well with .mpd files , for m3u8 please use n_m3u8 program (not included in this script).
+This modified script add proper support for 2 audio tracks, french and english (or other languages but MKV tags would be incorrects so modify the script if you intend to use another audio).
+A batch file is (or will be) provided to make things easier and as "-id" argument is mandatory for dual audio tracks.
+Other branch will be more deeply modified and will (maybe) offer an easier command interface, and ability to prepare several download.
+I am not a developer at all, so don't expect anything great.
 
 ## How to use
 ### Requirements
