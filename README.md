@@ -6,14 +6,14 @@ https://github.com/parnexcodes/widevine-L3-WEB-DL-Script
 
 This modified script add proper support for 2 audio tracks (still allow a single track), intended for french and english (or other languages but MKV tracks tags would be incorrects so please modify the script / or resulting MKV as you need if you want to use another language).
 
-A batch file is (or will be) provided to make things easier and as "-id" argument is mandatory for dual audio tracks.
+A batch file is provided to make things easier and as "-id" argument is mandatory for dual audio tracks.
 
 This branch will be more deeply modified and will (maybe) offer an easier command interface, and ability to prepare several download.
 If possible, a beginning of automation support will be made.
 
 Please note : I am not a developer at all, so don't expect anything great, this is just for fun :)
 
-## How to use
+## How to install
 ### Requirements
 * Python and pip
 * Widevine Key Guesser
@@ -28,17 +28,25 @@ Please note : I am not a developer at all, so don't expect anything great, this 
 ### Get the keys
 Go to the protected stream you want to download. Activate the plugin (restart may be required after installing the extension) and download the extracted keys (keys.json).
 
-### Decode the video
-Download the widevine-L3-WEB-DL-Script from here (Code -> Download zip). Copy the downloaded keys.json file to the same folder.
 
-Run the downloader with `python webdl.py -o <name_without_extension>` from the folder you downloaded and extracted the script from.
+## New in this script : 
+* Proper support of dual audio tracks, support single track as you wish.
+* New mandatory argument -k to specify the json file name. Why ? To allow to prepare several json files named according to each video. You don't have to prepare and reload the script each time.
+* Using download.bat you have to type in the filename of your json file. This name will be used for the output video
+ eg : mymovie.json will output a mymovie.mkv file
+* With download.bat, -id argument is implicit and you have to choose video quality and audio track(s). 
+* New argument -es allow loading of external subtitles that will be added to the mkv file. Support SRT files only and the sub MUST have the same filename as the json file.
+* Temporary files are deleted after merging.
 
-The script will look in the keys.json file, starting from the second element in the JSON array. If the script can't find any keys, either modify the script (line 27 and 31), or the keys.json. See <https://gist.github.com/parnexcodes/74fef2e33a2171031000a97c371a1a65> for examples for some common use cases.
+### Usage
 
-If there are multiple `mpd_url`s in the file and it isn't working, try changing them around. You can also change the `mpd_url` for a custom one if you have one.
-
-### Options
--id and -s are optional (**id** to manually enter video and audio id from ytdl, **s** for subtitle url.). **Subtitle part is bugged right now**.
+* Copy json file and optionnal external srt file in the script folder
+* Launch Download.bat, type the name of json filename and type 1 if you want to add srt
+* Choose video quality or type Enter for best
+* Choose French track first
+* Choose English track or type enter to use a single audio track
+* Wait for download / decryption / merging
+* Enjoy your video !
 
 ## Report Issues
 
