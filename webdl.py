@@ -18,6 +18,7 @@ arguments = argparse.ArgumentParser()
 #arguments.add_argument("-o", '--output', dest="output", help="Specify output file name with no extension", required=True)
 arguments.add_argument("-id", dest="id", action='store_true', help="use if you want to manually enter video and audio id.")
 arguments.add_argument("-s", dest="subtitle", help="enter subtitle url")
+arguments.add_argument("-es", dest="ex_subtitle", action='store_true', help="load external subtitle")
 arguments.add_argument("-k", '--output', dest="key", help="Specify input keyfile name", required=True)
 args = arguments.parse_args()
 
@@ -49,6 +50,7 @@ SubtitleEditexe = dirPath + '/binaries/SubtitleEdit.exe'
 # mpdurl = str(args.mpd)
 output = str(args.key).replace(".json", "")
 subtitle = str(args.subtitle)
+ex_sub = str(args.key).replace(".json", ".srt")
 
 if args.id:
     print(f'Selected MPD : {json_mpd_url}\n')    
@@ -71,9 +73,12 @@ else:
 
 
 print("\nDecrypting .....")
-subprocess.run(f'{mp4decryptexe} --show-progress {keys} encrypted.m4a decrypted.m4a', shell=True)
-subprocess.run(f'{mp4decryptexe} --show-progress {keys} encrypted2.m4a decrypted2.m4a', shell=True)
 subprocess.run(f'{mp4decryptexe} --show-progress {keys} encrypted.mp4 decrypted.mp4', shell=True)  
+subprocess.run(f'{mp4decryptexe} --show-progress {keys} encrypted.m4a decrypted.m4a', shell=True)
+if os.path.isfile('encrypted2.m4a'):
+    subprocess.run(f'{mp4decryptexe} --show-progress {keys} encrypted2.m4a decrypted2.m4a', shell=True)
+else:
+        pass
 
 
 
@@ -84,6 +89,17 @@ if args.subtitle:
     print("Merging .....")
     subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:fr', '--track-order', '0:0,1:0,2:0,3:0,4:0', 'fr.srt'])
     print("\nAll Done .....")
+      
+else: 
+        pass
+        
+if args.ex_subtitle:
+  print("Merging .....")
+  if os.path.isfile('decrypted2.m4a'):
+      subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_sub])
+  else:
+        subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_sub])
+        print("\nAll Done .....")           
 else:
     print("Merging .....")
     if os.path.isfile('decrypted2.m4a'):
@@ -92,20 +108,22 @@ else:
         subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0'])
         print("\nAll Done .....")    
 
-print("\nDo you want to delete the Encrypted Files : Press 1 for yes , 2 for no")
-delete_choice = int(input("Enter Response : "))
+print("\nDeleting temporary files...")
+#delete_choice = int(input("Enter Response : "))
 
-if delete_choice == 1:
-    os.remove("encrypted.m4a")
-    os.remove("encrypted2.m4a") 
-    os.remove("encrypted.mp4")
-    os.remove("decrypted.m4a")
+#if delete_choice == 1:
+os.remove("encrypted.m4a")
+os.remove("encrypted.mp4")
+os.remove("decrypted.m4a")
+os.remove("decrypted.mp4")
+try:    
     os.remove("decrypted2.m4a")
-    os.remove("decrypted.mp4")
-    try:    
-        os.remove("fr.srt")
-        os.remove("fr.ttml2")
-    except:
-        pass
-else:
+    os.remove("encrypted2.m4a")
+    os.remove("fr.srt")
+    os.remove("fr.ttml2")
+    
+except:
     pass
+print("\nDone !")    
+#else:
+ #   pass
