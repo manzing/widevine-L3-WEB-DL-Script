@@ -2,7 +2,10 @@
 
 ### Version française ici :
 https://github.com/manzing/widevine-L3-WEB-DL-Script/blob/French-English-V2/README_FR.md
+
 This is a script created to WEB-DL L3 Widevine Content.
+
+
 
 Original script by Parnexcodes (thanks for his work !) is here :
 https://github.com/parnexcodes/widevine-L3-WEB-DL-Script
