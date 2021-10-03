@@ -41,7 +41,7 @@ Go to the protected stream you want to download. Activate the plugin (restart ma
 ### Usage
 
 * Copy json file and optionnal external srt file in the script folder
-* Launch Download.bat, type the name of json filename and type 1 if you want to add external srt
+* Launch Download.bat, type the name of json filename and type "1" if you want to add external srt
 * Choose video quality or type Enter for best
 * Choose French track first
 * Choose English track or type enter to use a single audio track
