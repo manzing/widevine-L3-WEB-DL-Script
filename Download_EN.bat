@@ -12,13 +12,13 @@ echo ***************************************************************************
 echo *                !! json file MUST be in script directory !!
 echo *****************************************************************************
 echo *
-set /p key="> Type the name of json file (withc extension) :"
+set /p key="> Type the name of json file (with extension) :"
 echo *
-echo ** To use external sub, sub file must be a SRT and be named excatly the same way as json file **
+echo ** To use external sub, sub file must be a SRT and must have the same filename as json file **
 echo ** 
 echo > Use external sub ? (.srt file only) ?
 echo *
-set /p es="> Enter 1 load a srt file, or type 0 :"
+set /p es="> Enter 1 to load a srt file, or type 0 :"
 
 if %es% ==1 (goto :ex_sub) else (goto :no_ex_sub)
 
