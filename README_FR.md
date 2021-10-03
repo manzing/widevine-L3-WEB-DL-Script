@@ -4,7 +4,7 @@ Ce script permet de faire des WEB-DL de contenu L3 Widevine.
 Le script original de Parnexcodes (merci à lui !) est ici :
 https://github.com/parnexcodes/widevine-L3-WEB-DL-Script
 
-Ce script modifier ajoute le support de choisir entre une ou 2 pistes audio, dont la 1ère eest considérée comme FR (pour que les tags MKV soient corrects).
+Ce script modifié ajoute le support de choisir entre une ou 2 pistes audio, dont la 1ère eest considérée comme FR (pour que les tags MKV soient corrects).
 
 Le fichier Download_FR.bat permet d'utiliser facilement le script.
 
