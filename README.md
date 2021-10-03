@@ -44,6 +44,10 @@ Go to the protected stream you want to download. Activate the plugin (restart ma
 * New argument -es allow loading of external subtitles that will be added to the mkv file. Support SRT files only and the sub MUST have the same filename as the json file.
 * Temporary files are deleted after merging.
 
+
+![cmd exe](https://user-images.githubusercontent.com/2737265/135748724-7dd8fe3a-9890-4341-b79a-ac4181d1aec6.png) 
+
+
 ### Usage
 
 * Copy json file and optionnal external srt file in the script folder
@@ -57,3 +61,4 @@ Go to the protected stream you want to download. Activate the plugin (restart ma
 ## Report Issues
 
 Open Issue on Github if you get any problem.
+
