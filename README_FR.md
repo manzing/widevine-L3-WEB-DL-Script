@@ -1,4 +1,4 @@
-# widevine-L3-WEB-DL-Script avec support de 2 pistes audios et sous-titres externes
+# Widevine-L3-WEB-DL-Script avec support de 2 pistes audios et sous-titres externes
 Ce script permet de faire des WEB-DL de contenu L3 Widevine.
 
 Le script original de Parnexcodes (merci à lui !) est ici :
