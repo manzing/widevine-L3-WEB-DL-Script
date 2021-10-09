@@ -50,7 +50,8 @@ SubtitleEditexe = dirPath + '/binaries/SubtitleEdit.exe'
 # mpdurl = str(args.mpd)
 output = str(args.key).replace(".json", "")
 subtitle = str(args.subtitle)
-ex_sub = str(args.key).replace(".json", ".srt")
+ex_subFR = str(args.key).replace(".json", "-FR.srt")
+ex_subEN = str(args.key).replace(".json", "-EN.srt")
 
 if args.id:
     print(f'Selected MPD : {json_mpd_url}\n')    
@@ -95,11 +96,25 @@ else:
         
 if args.ex_subtitle:
   print("Merging .....")
-  if os.path.isfile('decrypted2.m4a'):
-      subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_sub])
-  else:
-        subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_sub])
-        print("\nAll Done .....")           
+  if os.path.isfile('decrypted2.m4a') and os.path.isfile(ex_subFR) and os.path.isfile(ex_subEN):
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:fr', ex_subFR , '--track-order', '0:0,1:0,2:0,3:0,4:0', '--language', '0:eng', ex_subEN])
+  
+  elif os.path.isfile('decrypted2.m4a') and os.path.isfile(ex_subFR):
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:fr','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_subFR])
+    
+  elif os.path.isfile('decrypted2.m4a') and os.path.isfile(ex_subEN):
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng', '--default-track', '0:no', '--compression' ,'0:none', 'decrypted2.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_subEN])      
+  
+  elif (not os.path.isfile('decrypted2.m4a')) and os.path.isfile(ex_subFR) and os.path.isfile(ex_subEN):
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:fr', ex_subFR , '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_subEN])
+          
+  elif (not os.path.isfile('decrypted2.m4a')) and os.path.isfile(ex_subEN):
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:eng','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_subEN])      
+  
+  else: 
+    subprocess.run([mkvmergeexe, '--ui-language' ,'en', '--output', output +'.mkv', '--language', '0:eng', '--default-track', '0:yes', '--compression', '0:none', 'decrypted.mp4', '--language', '0:fr', '--default-track', '0:yes', '--compression' ,'0:none', 'decrypted.m4a', '--language', '0:fr','--track-order', '0:0,1:0,2:0,3:0,4:0', ex_subFR])
+  print("\nAll Done .....")           
+
 else:
     print("Merging .....")
     if os.path.isfile('decrypted2.m4a'):
