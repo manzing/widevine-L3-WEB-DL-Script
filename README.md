@@ -36,7 +36,7 @@ Go to the protected stream you want to download. Activate the plugin (restart ma
 
 
 ## New in this script : 
-* Proper support of dual audio tracks, support single track as you wish.
+* Support of dual audio tracks, support single track as you wish.
 * New mandatory argument -k to specify the json file name. Why ? To allow to prepare several json files named according to each video. You don't have to prepare and reload the script each time.
 * Using download.bat you have to type in the filename of your json file. This name will be used for the output video
  eg : mymovie.json will output a mymovie.mkv file
