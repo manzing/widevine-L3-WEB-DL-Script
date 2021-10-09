@@ -41,7 +41,7 @@ Go to the protected stream you want to download. Activate the plugin (restart ma
 * Using download.bat you have to type in the filename of your json file. This name will be used for the output video
  eg : mymovie.json will output a mymovie.mkv file
 * With download.bat, -id argument is implicit and you have to choose video quality and audio track(s). 
-* New argument -es allow loading of external subtitles that will be added to the mkv file. Support SRT files only and the sub MUST have the same filename as the json file.
+* New argument -es allow loading of external subtitles that will be added to the mkv file. Support SRT files only and the sub MUST be named accordingly to the json file.
 * Temporary files are deleted after merging.
 
 
@@ -51,6 +51,7 @@ Go to the protected stream you want to download. Activate the plugin (restart ma
 ### Usage
 
 * Copy json file and optionnal external srt file in the script folder
+SRT file must be name as follow : video.json / video-FR.srt / video-EN.srt
 * Launch Download.bat, type the name of json filename and type "1" if you want to add external srt
 * Choose video quality or type Enter for best
 * Choose French track first
