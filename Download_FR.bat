@@ -14,11 +14,14 @@ echo ***************************************************************************
 echo *
 set /p key="> Entrer le nom du fichier json (avec extension) :"
 echo *
-echo ** Pour utiliser des sous-titres externes, votre fichier SRT doit porter exactement le meme nom que le fichier JSON **
-echo ** 
-echo > Utiliser des sous-titres externes (.srt uniquement) ?
+echo ** Pour utiliser des sous-titres externes (2 maxi), vos fichiers SRT doivent porter exactement le meme nom que le fichier JSON + "-FR" ou "-EN" 
+echo ** et se situer dans le dossier du script.
+echo **
+echo ** Par defaut les langues sont FR et EN. Ex : video.json / video-FR.srt / video-EN.srt
+echo **
+echo ** Utiliser des sous-titres externes (.srt uniquement) ?
 echo *
-set /p es="> 1 pour charger un fichier srt, sinon 0 :"
+set /p es="> Tapez "1" pour charger des fichiers srt, sinon "0" puis "Entree" :"
 
 if %es% ==1 (goto :ex_sub) else (goto :no_ex_sub)
 
