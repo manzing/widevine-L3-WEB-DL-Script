@@ -19,7 +19,7 @@ arguments = argparse.ArgumentParser()
 arguments.add_argument("-id", dest="id", action='store_true', help="use if you want to manually enter video and audio id.")
 arguments.add_argument("-s", dest="subtitle", help="enter subtitle url")
 arguments.add_argument("-es", dest="ex_subtitle", action='store_true', help="load external subtitle")
-arguments.add_argument("-k", '--output', dest="key", help="Specify input keyfile name", required=True)
+arguments.add_argument("-k", dest="key", help="Specify input keyfile name", required=True)
 args = arguments.parse_args()
 
 key = str(args.key)
